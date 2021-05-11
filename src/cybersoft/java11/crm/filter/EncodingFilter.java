@@ -11,7 +11,9 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebFilter(urlPatterns = "/*")
+import cybersoft.java11.crm.utils.UrlConst;
+
+@WebFilter(urlPatterns = UrlConst.ROOT)
 public class EncodingFilter implements Filter {
 	private int requestSeq = 1;
 
@@ -21,13 +23,13 @@ public class EncodingFilter implements Filter {
 		// TODO: set charset encoding for request and response
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse resp = (HttpServletResponse) response;
-		
+
 		System.out.printf("Access time: %d\n", requestSeq++);
-		System.out.println("Received request.");
-		
+		System.out.println("Received request in Encoding Filter");
+
 		chain.doFilter(request, response);
-		
-		System.out.println("Sent response.");
+
+		System.out.println("Sent response in Encoding Filter");
 	}
 
 }
