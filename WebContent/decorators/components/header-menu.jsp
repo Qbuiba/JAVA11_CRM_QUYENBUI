@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="cybersoft.java11.crm.utils.UrlConst"%>
 <!-- Header Layout Content -->
             <div class="page__header mb-0">
                 <div class="container page__container">
@@ -44,6 +46,9 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Task</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="<%=request.getContextPath()%>/role">Role</a>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Components</a>

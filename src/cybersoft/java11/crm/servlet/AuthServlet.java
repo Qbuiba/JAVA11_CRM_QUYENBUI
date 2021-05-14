@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import cybersoft.java11.crm.biz.AuthBiz;
 import cybersoft.java11.crm.model.User;
+import cybersoft.java11.crm.utils.PathConst;
 import cybersoft.java11.crm.utils.UrlConst;
 
 @WebServlet(name = "authServlet", urlPatterns = { UrlConst.AUTH_LOGIN, UrlConst.AUTH_FORGOT_PASSWORD,
@@ -26,7 +27,6 @@ public class AuthServlet extends HttpServlet {
 	@Override
 	public void init() throws ServletException {
 		// TODO Auto-generated method stub
-		super.init();
 		biz = new AuthBiz();
 	}
 
@@ -37,7 +37,7 @@ public class AuthServlet extends HttpServlet {
 
 		switch (path) {
 		case UrlConst.AUTH_LOGIN:
-			RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/auth/login.jsp");
+			RequestDispatcher dispatcher = req.getRequestDispatcher(PathConst.AUTH_LOGIN);
 			dispatcher.forward(req, resp);
 			break;
 		case UrlConst.AUTH_LOGOUT:
@@ -59,8 +59,6 @@ public class AuthServlet extends HttpServlet {
 			String email = req.getParameter("email");
 			String password = req.getParameter("password");
 
-			System.out.printf("email: %s, password: %s\n", email, password);
-
 			User user = biz.login(email, password);
 
 			if (user != null) { // logged in successfully
@@ -68,11 +66,11 @@ public class AuthServlet extends HttpServlet {
 
 				session.setAttribute("userId", "" + user.getId());
 				session.setAttribute("fullname", user.getFullname());
-				session.setMaxInactiveInterval(60 * 60 * 30);
+				session.setMaxInactiveInterval(60 * 3);
 
 				resp.sendRedirect(req.getContextPath() + "/home");
 			} else { // logged in fail
-				req.getRequestDispatcher("/WEB-INF/auth/login.jsp").forward(req, resp);
+				req.getRequestDispatcher(PathConst.AUTH_LOGIN).forward(req, resp);
 			}
 
 			break;
