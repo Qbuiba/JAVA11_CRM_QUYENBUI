@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter(urlPatterns = "/*")
+import cybersoft.java11.crm.utils.UrlConst;
+
+@WebFilter(urlPatterns = UrlConst.ROOT)
 public class AuthFilter implements Filter {
 
 	@Override
@@ -21,19 +23,19 @@ public class AuthFilter implements Filter {
 		// TODO Auto-generated method stub
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse resp = (HttpServletResponse) response;
-		
+
 		// check authentication
 		HttpSession session = req.getSession();
-		String userId = (String)session.getAttribute("userId");
-		
-		if(userId != null) {
+		String userId = (String) session.getAttribute("userId");
+
+		if (userId != null) {
 			chain.doFilter(request, response);
 		} else {
-			if(req.getServletPath().equals("/login") || req.getServletPath().startsWith("/assets/"))
+			if (req.getServletPath().equals("/login") || req.getServletPath().startsWith("/assets/"))
 				chain.doFilter(request, response);
 			else
 				resp.sendRedirect(req.getContextPath() + "/login");
 		}
 	}
-	
+
 }

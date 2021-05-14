@@ -12,8 +12,11 @@ import javax.servlet.http.HttpSession;
 
 import cybersoft.java11.crm.biz.AuthBiz;
 import cybersoft.java11.crm.model.User;
+import cybersoft.java11.crm.utils.PathConst;
+import cybersoft.java11.crm.utils.UrlConst;
 
-@WebServlet(name = "authServlet", urlPatterns = { "/login", "/logout", "/register" })
+@WebServlet(name = "authServlet", urlPatterns = { UrlConst.AUTH_LOGIN, UrlConst.AUTH_FORGOT_PASSWORD,
+		UrlConst.AUTH_LOGOUT, UrlConst.AUTH_REGISTER, })
 public class AuthServlet extends HttpServlet {
 	/**
 	 * 
@@ -24,7 +27,6 @@ public class AuthServlet extends HttpServlet {
 	@Override
 	public void init() throws ServletException {
 		// TODO Auto-generated method stub
-		super.init();
 		biz = new AuthBiz();
 	}
 
@@ -34,11 +36,14 @@ public class AuthServlet extends HttpServlet {
 		String path = req.getServletPath();
 
 		switch (path) {
-		case "/login":
-			RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/auth/login.jsp");
+		case UrlConst.AUTH_LOGIN:
+			RequestDispatcher dispatcher = req.getRequestDispatcher(PathConst.AUTH_LOGIN);
 			dispatcher.forward(req, resp);
 			break;
-
+		case UrlConst.AUTH_LOGOUT:
+			req.getSession().invalidate();
+			resp.sendRedirect(req.getContextPath() + UrlConst.AUTH_LOGIN);
+			break;
 		default:
 			break;
 		}
@@ -50,11 +55,9 @@ public class AuthServlet extends HttpServlet {
 		String path = req.getServletPath();
 
 		switch (path) {
-		case "/login":
+		case UrlConst.AUTH_LOGIN:
 			String email = req.getParameter("email");
 			String password = req.getParameter("password");
-
-			System.out.printf("email: %s, password: %s\n", email, password);
 
 			User user = biz.login(email, password);
 
@@ -62,11 +65,12 @@ public class AuthServlet extends HttpServlet {
 				HttpSession session = req.getSession();
 
 				session.setAttribute("userId", "" + user.getId());
-				session.setMaxInactiveInterval(30);
+				session.setAttribute("fullname", user.getFullname());
+				session.setMaxInactiveInterval(60 * 3);
 
 				resp.sendRedirect(req.getContextPath() + "/home");
 			} else { // logged in fail
-				req.getRequestDispatcher("/WEB-INF/auth/login.jsp").forward(req, resp);
+				req.getRequestDispatcher(PathConst.AUTH_LOGIN).forward(req, resp);
 			}
 
 			break;
