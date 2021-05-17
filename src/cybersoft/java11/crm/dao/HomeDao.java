@@ -4,24 +4,33 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import cybersoft.java11.crm.config.MySqlConnection;
+import cybersoft.java11.crm.config.DatabaseConnection;
+import cybersoft.java11.crm.dao.container.IOCContainer;
 
 public class HomeDao {
-	
+
+	DatabaseConnection _dbConnection;
+
+	public HomeDao() {
+		// TODO Auto-generated constructor stub
+		_dbConnection = IOCContainer.getDataBaseConnection();
+	}
+
 	public boolean testConnection() {
-		Connection connection = MySqlConnection.getConnection();
-		if(connection == null)
+
+		Connection connection = _dbConnection.getConnection();
+		if (connection == null)
 			return false;
-		
+
 		return true;
 	}
-	
+
 	public boolean checkHealth() {
 		boolean result = false;
-		Connection connection = MySqlConnection.getConnection();
-		if(connection == null)
+		Connection connection = _dbConnection.getConnection();
+		if (connection == null)
 			return result;
-		
+
 		String test = "select 1 from dual";
 		try {
 			Statement statement = connection.createStatement();
@@ -30,7 +39,7 @@ public class HomeDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return result;
 	}
 }

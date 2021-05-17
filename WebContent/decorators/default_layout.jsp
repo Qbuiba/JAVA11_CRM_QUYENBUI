@@ -18,8 +18,8 @@
 		<div class="mdk-header-layout js-mdk-header-layout">
 			<!-- HEADER -->
 			<jsp:include page="/decorators/components/header.jsp"></jsp:include>
-			<!-- END - HEADER -->
-	        
+			<!-- END HEADER -->
+			
 			<!-- PAGE CONTENT -->
 			<div class="mdk-header-layout__content page">
 				<!-- HEADER-MENU -->
