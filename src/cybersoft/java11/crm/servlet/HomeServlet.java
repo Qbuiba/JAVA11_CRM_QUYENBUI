@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cybersoft.java11.crm.biz.HomeBiz;
-import cybersoft.java11.crm.utils.JspPathConst;
+import cybersoft.java11.crm.utils.PathConst;
 import cybersoft.java11.crm.utils.UrlConst;
 
 @WebServlet(name = "homeServlet", urlPatterns = { UrlConst.HOME, UrlConst.HEALTH })
@@ -65,6 +65,6 @@ public class HomeServlet extends HttpServlet {
 //		else
 //			resp.getWriter().append("Connection to database has been made unsuccessfully.");
 
-		req.getRequestDispatcher(JspPathConst.AUTH_LOGIN).forward(req, resp);
+		req.getRequestDispatcher(PathConst.HOME_DASHBOARD).forward(req, resp);
 	}
 }

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import cybersoft.java11.crm.biz.RoleBiz;
 import cybersoft.java11.crm.model.Role;
+import cybersoft.java11.crm.utils.PathConst;
 import cybersoft.java11.crm.utils.UrlConst;
 
 @WebServlet(name = "roleServlet", urlPatterns = { UrlConst.ROLE_ADD, UrlConst.ROLE_DASHBOARD, UrlConst.ROLE_DELETE,
@@ -36,8 +37,24 @@ public class RoleServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		List<Role> listRole = biz.findAll();
 
-		for (Role role : listRole) {
-			resp.getWriter().append(role.toString());
+		String path = req.getServletPath();
+		switch (path) {
+		case UrlConst.ROLE_DASHBOARD: {
+			req.setAttribute("roles", listRole);
+			req.getRequestDispatcher(PathConst.ROLE_DASHBOARD).forward(req, resp);
+			break;
 		}
+		case UrlConst.ROLE_ADD: {
+			req.getRequestDispatcher(PathConst.ROLE_ADD).forward(req, resp);
+			break;
+		}
+		case UrlConst.ROLE_UPDATE: {
+			req.getRequestDispatcher(PathConst.ROLE_UPDATE).forward(req, resp);
+			break;
+		}
+		default:
+			throw new IllegalArgumentException("Unexpected value: " + path);
+		}
+
 	}
 }

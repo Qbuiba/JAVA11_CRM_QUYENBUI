@@ -1,11 +1,14 @@
 package cybersoft.java11.crm.utils;
 
-public class JspPathConst {
+public class PathConst {
 	// HOME
-	public static final String HOME_DASHBOARD = "/WEB-INF/views/home/index.jsp";
+	public static final String HOME_DASHBOARD = "/WEB-INF/views/home/home.jsp";
 
 	// ROLE
 	public static final String ROLE_DASHBOARD = "/WEB-INF/views/role/index.jsp";
+	public static final String ROLE_ADD = "/WEB-INF/views/role/role-add.jsp";
+	public static final String ROLE_UPDATE = "/WEB-INF/views/role/role-update.jsp";
+	public static final String ROLE_DELETE = "/WEB-INF/views/role/role-delete.jsp";
 
 	// AUTH
 	public static final String AUTH_LOGIN = "/WEB-INF/views/auth/login.jsp";

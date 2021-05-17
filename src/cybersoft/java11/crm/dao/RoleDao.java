@@ -7,15 +7,22 @@ import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 
-import cybersoft.java11.crm.config.MySqlConnection;
+import cybersoft.java11.crm.config.DatabaseConnection;
+import cybersoft.java11.crm.dao.container.IOCContainer;
 import cybersoft.java11.crm.model.Role;
 
 public class RoleDao {
+	DatabaseConnection _dbConnection;
+
+	public RoleDao() {
+		_dbConnection = IOCContainer.getDataBaseConnection();
+	}
+
 	public List<Role> findAll() {
 		/* return all roles in database */
 		List<Role> listRole = new LinkedList<Role>();
 
-		Connection connection = MySqlConnection.getConnection();
+		Connection connection = _dbConnection.getConnection();
 		try {
 			Statement statement = connection.createStatement();
 			String query = "select id, name, description from role";

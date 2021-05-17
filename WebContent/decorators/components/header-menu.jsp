@@ -1,3 +1,4 @@
+<%@page import="cybersoft.java11.crm.utils.UrlConst"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!-- Header Layout Content -->
@@ -63,6 +64,22 @@
                                         <a class="dropdown-item" href="drag.html">Drag &amp; Drop</a>
                                         <a class="dropdown-item" href="pagination.html">Pagination</a>
                                         <a class="dropdown-item" href="vector-maps.html">Vector Maps</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                                        Role
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="<%=request.getContextPath() %>/role">
+                                            Role DashBoard
+                                        </a>
+                                        <a class="dropdown-item" href="#">
+                                            Role Add
+                                        </a>
+                                        <a class="dropdown-item" href="#">
+                                            Role Update
+                                        </a>
                                     </div>
                                 </li>
                             </ul>
