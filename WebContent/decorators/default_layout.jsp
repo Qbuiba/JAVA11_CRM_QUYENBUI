@@ -30,10 +30,13 @@
 				</div>
 			</div>
 			<!-- END - PAGE CONTENT -->
-		</div>	
+		</div>
 		<!-- END PAGE CONTENT -->
+		
+		
+		
 		<!-- SPONSER -->
-		<jsp:include page="/decorators/components/sponsor.jsp"></jsp:include>
+		<jsp:include page="/decorators/components/sponser.jsp"></jsp:include>
 	 	<!-- END SPONSER -->
 		<!-- FOOTER -->
 		<jsp:include page="/decorators/components/footer.jsp"></jsp:include>

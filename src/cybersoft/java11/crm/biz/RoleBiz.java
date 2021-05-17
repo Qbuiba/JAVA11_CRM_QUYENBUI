@@ -15,4 +15,8 @@ public class RoleBiz {
 	public List<Role> findAll() {
 		return dao.findAll();
 	}
+
+	public Role findRoleById(int id) {
+		return dao.findRoleById(id);
+	}
 }

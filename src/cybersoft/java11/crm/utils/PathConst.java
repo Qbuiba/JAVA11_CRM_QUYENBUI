@@ -12,6 +12,8 @@ public class PathConst {
 
 	// AUTH
 	public static final String AUTH_LOGIN = "/WEB-INF/views/auth/login.jsp";
+	public static final String AUTH_REGISTER = "/WEB-INF/views/auth/register.jsp";
+	public static final String AUTH_FORGOT_PASSWORD = "/WEB-INF/views/auth/forgot-password.jsp";
 
 	// PROJECT
 	public static final String PROJECT_DASHBOARD = "/WEB-INF/views/project/index.jsp";

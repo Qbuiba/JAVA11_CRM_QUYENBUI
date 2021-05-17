@@ -27,7 +27,6 @@ public class AuthServlet extends HttpServlet {
 	@Override
 	public void init() throws ServletException {
 		// TODO Auto-generated method stub
-		super.init();
 		biz = new AuthBiz();
 	}
 
@@ -59,8 +58,6 @@ public class AuthServlet extends HttpServlet {
 		case UrlConst.AUTH_LOGIN:
 			String email = req.getParameter("email");
 			String password = req.getParameter("password");
-
-			System.out.printf("email: %s, password: %s\n", email, password);
 
 			User user = biz.login(email, password);
 

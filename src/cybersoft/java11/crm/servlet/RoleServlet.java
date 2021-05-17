@@ -36,19 +36,20 @@ public class RoleServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		List<Role> listRole = biz.findAll();
-
 		String path = req.getServletPath();
+
 		switch (path) {
 		case UrlConst.ROLE_DASHBOARD: {
 			req.setAttribute("roles", listRole);
 			req.getRequestDispatcher(PathConst.ROLE_DASHBOARD).forward(req, resp);
 			break;
 		}
-		case UrlConst.ROLE_ADD: {
-			req.getRequestDispatcher(PathConst.ROLE_ADD).forward(req, resp);
-			break;
-		}
 		case UrlConst.ROLE_UPDATE: {
+			int updateRoleId = Integer.parseInt(req.getParameter("id"));
+
+			Role role = biz.findRoleById(updateRoleId);
+			req.setAttribute("role", role);
+
 			req.getRequestDispatcher(PathConst.ROLE_UPDATE).forward(req, resp);
 			break;
 		}
