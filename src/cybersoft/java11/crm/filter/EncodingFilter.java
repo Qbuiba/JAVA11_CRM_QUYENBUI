@@ -8,8 +8,6 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import cybersoft.java11.crm.utils.UrlConst;
 
@@ -21,15 +19,15 @@ public class EncodingFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		// TODO: set charset encoding for request and response
-		HttpServletRequest req = (HttpServletRequest) request;
-		HttpServletResponse resp = (HttpServletResponse) response;
-
-		System.out.printf("Access time: %d\n", requestSeq++);
-		System.out.println("Received request in Encoding Filter");
+//		HttpServletRequest req = (HttpServletRequest) request;
+//		HttpServletResponse resp = (HttpServletResponse) response;
+//
+//		System.out.printf("Access time: %d\n", requestSeq++);
+//		System.out.println("Received request in Encoding Filter");
 
 		chain.doFilter(request, response);
 
-		System.out.println("Sent response in Encoding Filter");
+//		System.out.println("Sent response in Encoding Filter");
 	}
 
 }

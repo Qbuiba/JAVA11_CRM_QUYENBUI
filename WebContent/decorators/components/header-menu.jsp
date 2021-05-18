@@ -71,22 +71,6 @@
                                         <a class="dropdown-item" href="vector-maps.html">Vector Maps</a>
                                     </div>
                                 </li>
-                                <li class="nav-item dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                                        Role
-                                    </a>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="<%=request.getContextPath() %>/role">
-                                            Role DashBoard
-                                        </a>
-                                        <a class="dropdown-item" href="#">
-                                            Role Add
-                                        </a>
-                                        <a class="dropdown-item" href="#">
-                                            Role Update
-                                        </a>
-                                    </div>
-                                </li>
                             </ul>
                         </div>
                         <!-- // END Default Navigation Bar -->

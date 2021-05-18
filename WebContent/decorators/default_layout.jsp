@@ -25,9 +25,7 @@
 				<!-- HEADER-MENU -->
 		        <jsp:include page="/decorators/components/header-menu.jsp"></jsp:include>
 				<!-- END - HEADER-MENU -->
-				<div class="container page__container">
-					<dec:body />
-				</div>
+				<dec:body />
 			</div>
 			<!-- END - PAGE CONTENT -->
 		</div>
@@ -36,7 +34,7 @@
 		
 		
 		<!-- SPONSER -->
-		<jsp:include page="/decorators/components/sponser.jsp"></jsp:include>
+		<jsp:include page="/decorators/components/sponsor.jsp"></jsp:include>
 	 	<!-- END SPONSER -->
 		<!-- FOOTER -->
 		<jsp:include page="/decorators/components/footer.jsp"></jsp:include>

@@ -66,7 +66,7 @@ public class AuthServlet extends HttpServlet {
 
 				session.setAttribute("userId", "" + user.getId());
 				session.setAttribute("fullname", user.getFullname());
-				session.setMaxInactiveInterval(60 * 2);
+				session.setMaxInactiveInterval(60 * 5);
 
 				resp.sendRedirect(req.getContextPath() + "/home");
 			} else { // logged in fail
