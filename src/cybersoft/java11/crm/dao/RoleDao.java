@@ -57,7 +57,7 @@ public class RoleDao {
 	public Role findRoleById(int id) {
 		Role result = null;
 
-		Connection connection = MySqlConnection.getConnection();
+		Connection connection = _dbConnection.getConnection();
 		try {
 			String query = "select name, description from role where id=?";
 
@@ -79,6 +79,70 @@ public class RoleDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+		return result;
+	}
+
+	public int addRole(String name, String description) {
+		int result = -1;
+		Connection connection = _dbConnection.getConnection();
+		try {
+			String query = "insert role(`name`, `description`) values(?, ?)";
+
+			PreparedStatement statement = connection.prepareStatement(query);
+
+			statement.setString(1, name);
+			statement.setString(2, description);
+
+			result = statement.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+		return result;
+	}
+
+	public int updateRoleById(int id, String name, String description) {
+		int result = -1;
+		Connection connection = _dbConnection.getConnection();
+		try {
+			String query = "update role set `name`=?, `description`=? where id=?";
+
+			PreparedStatement statement = connection.prepareStatement(query);
+
+			statement.setString(1, name);
+			statement.setString(2, description);
+			statement.setInt(3, id);
+
+			result = statement.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 		return result;

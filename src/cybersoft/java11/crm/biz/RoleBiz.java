@@ -19,4 +19,21 @@ public class RoleBiz {
 	public Role findRoleById(int id) {
 		return dao.findRoleById(id);
 	}
+
+	public boolean addRole(String name, String description) {
+		if (dao.addRole(name, description) == 1) {
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+
+	public boolean updateRoleById(int id, String name, String description) {
+		if (dao.updateRoleById(id, name, description) == 1) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
